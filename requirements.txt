@@ -1,0 +1,4 @@
+duckdb==1.1.3
+requests==2.32.3
+polars==1.12.0
+fastexcel==0.12.0
