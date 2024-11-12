@@ -35,3 +35,10 @@ python get_last_ranking.py --output-dir ./data_output/
 ## Télécharger l'historique de tous les pointages
 
 WIP (Work In Progress) : cette fonctionnalité est en cours de développement. Plus d'informations seront fournies une fois terminée.
+
+## Pour aller encore plus loin
+
+Ce projet est actuellement un proof of concept (PoC). À l'avenir, on pourrait envisager : 
+
+- De diffuser les pointages via une API
+- Pouvoir charger directement les pointages depuis un plugin QGIS
