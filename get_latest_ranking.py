@@ -19,7 +19,7 @@ def main():
     url = build_url(date, last_update)
     file = f"./.data/data_{date}_{last_update}.xlsx"
     download_file(url, file)
-    build_gpkg(Path(file), name=f"classement_{date}_{last_update}", output_dir=args.output_dir)
+    build_gpkg(Path(file), name=f"classement_{date}_{last_update}", date=date, output_dir=args.output_dir)
 
 if __name__ == "__main__":
     main()
