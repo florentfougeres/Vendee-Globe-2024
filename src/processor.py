@@ -27,7 +27,7 @@ def read_xlsx(file: Path):
     ]
     
     df = pd.read_excel(file, usecols="B:U", skiprows=5, nrows=40, header=None, names=columns, engine="calamine")
-    df = df.applymap(lambda x: x.replace('\r\n', ' - ') if isinstance(x, str) else x)
+    df = df.apply(lambda col: col.map(lambda x: x.replace('\r\n', ' - ') if isinstance(x, str) else x))
 
     return df
 
