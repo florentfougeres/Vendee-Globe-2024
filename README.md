@@ -29,12 +29,15 @@ python get_last_ranking.py --output-dir <chemin_du_répertoire>
 ### Exemple 
 
 ```bash
-python get_last_ranking.py --output-dir ./data_output/
+python dernier_pointage.py --output-dir ./data_output/
 ```
 
 ## Télécharger l'historique de tous les pointages
 
-WIP (Work In Progress) : cette fonctionnalité est en cours de développement. Plus d'informations seront fournies une fois terminée.
+```bash
+python trajectoires_pointages.py --output-dir ./data_output/
+```
+
 
 ## Pour aller encore plus loin
 
