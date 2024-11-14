@@ -40,7 +40,7 @@ def read_xlsx(file: Path, param_date: str):
     columns = [
         "rang",
         "code",
-        "bateau",
+        "nom",
         "heure",
         "latitude",
         "longitude",
@@ -77,6 +77,7 @@ def read_xlsx(file: Path, param_date: str):
 
     date_obj = datetime.strptime(param_date, "%Y%m%d")
     df["timestamp"] = df["heure"].apply(lambda x: parse_hour(x, date_obj))
+    df[["skipper", "bateau"]] = df["nom"].str.split(pat=" - ", n=1, expand=True)
 
     return df
 
