@@ -1,0 +1,68 @@
+name: Python trajectoires_pointages.py daily release
+
+on:
+  schedule:
+    - cron: "30 7 * * *" 
+  pull_request: 
+    branches:
+      - main 
+  workflow_dispatch:
+
+env:
+  FILE_NAME: data_$(date +'%Y%m%d')
+
+permissions:
+  contents: write
+  id-token: write
+
+jobs:
+  generate:
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.10.15
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Run Python script
+        run: |
+          mkdir -p output
+          python trajectoires_pointages.py --output-dir output
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: generated-file
+          path: output/*
+
+  release:
+    needs: generate
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Download artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: generated-file
+
+      - name: Delete previous release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release delete latest --yes || echo "No previous release to delete"
+
+      - name: Create new release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release create latest ${{ env.FILE_NAME }}.gpkg --title "Latest Daily Release" --notes "Automatically generated daily release"
