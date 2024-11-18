@@ -1,7 +1,7 @@
 
 # 🌍 Vendée Globe 2024 ⛵
 
-Ce projet propose des **scripts Python** permettant de construire des données géographiques à partir des pointages du **Vendée Globe 2024**, fournis toutes les 4 heures sur le [site officiel](https://www.vendeeglobe.org/classement) de la compétition. 
+Ce projet propose des **scripts Python** permettant de construire des données géographiques à partir des pointages du **Vendée Globe 2024**, fournis toutes les 4 heures sur le [site officiel](https://www.vendeeglobe.org/classement) de la compétition.
 
 Grâce à ce projet, vous pouvez visualiser les **dernières positions des skippers** dans votre SIG préféré comme [QGIS](https://qgis.org/). 🗺️
 
@@ -53,3 +53,12 @@ Ce projet est actuellement un **proof of concept (PoC)**. À l'avenir, plusieurs
 - 🧭 **Chargement direct des pointages depuis un plugin QGIS**
 
 **N'hésitez pas à contribuer ou à proposer des améliorations !** 🤝
+
+## Développement
+
+Dans ce projet les pre-commit sont utilisés, pour mettre en place votre environnement dev il faut donc faire les opérations suivantes (dans votre venv).
+
+```shell
+pip install pre-commit
+pre-commit install
+```
