@@ -157,7 +157,6 @@ def create_geom(file: Path, date: str) -> gpd.GeoDataFrame:
 
     gdf = gpd.GeoDataFrame(df, geometry=geometry, crs="EPSG:4326")
 
-    print(gdf[["latitude", "longitude", "latitude_decimal", "longitude_decimal", "geometry"]])
     return gdf
 
 
