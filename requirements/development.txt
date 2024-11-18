@@ -1,0 +1,8 @@
+# Develoment dependencies
+# -----------------------
+
+black
+
+pylint>=3
+isort>=5.13
+pre-commit>=3,<4
