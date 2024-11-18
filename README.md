@@ -19,16 +19,6 @@ pip install -r requirements.txt
 ## Obtenir le dernier pointage en date au format GPKG
 
 ```bash
-python get_last_ranking.py --output-dir <chemin_du_répertoire>
-```
-
-### Arguments
-
-- `--output-dir` : (optionnel) Spécifie le répertoire dans lequel le fichier GPKG sera sauvegardé. Si cet argument est omis, le fichier sera exporté dans le répertoire courant (`./`).
-
-### Exemple 
-
-```bash
 python dernier_pointage.py --output-dir ./data_output/
 ```
 

@@ -104,6 +104,7 @@ def read_xlsx(file: Path, param_date: str) -> pd.DataFrame:
         lambda col: col.map(lambda x: x.replace("\r\n", " - ") if isinstance(x, str) else x)
     )
 
+
     date_obj = datetime.strptime(param_date, "%Y%m%d")
     df["timestamp"] = df["heure"].apply(lambda x: parse_hour(x, date_obj))
     df[["skipper", "bateau"]] = df["nom"].str.split(pat=" - ", n=1, expand=True)
@@ -146,12 +147,17 @@ def create_geom(file: Path, date: str) -> gpd.GeoDataFrame:
         lambda x: dms_to_decimal(*parse_coordinates(x))
     )
 
+
     geometry = [
         Point(lon, lat)
         for lon, lat in zip(df["longitude_decimal"], df["latitude_decimal"])
     ]
 
+    
+
     gdf = gpd.GeoDataFrame(df, geometry=geometry, crs="EPSG:4326")
+
+    print(gdf[["latitude", "longitude", "latitude_decimal", "longitude_decimal", "geometry"]])
     return gdf
 
 
