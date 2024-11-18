@@ -37,5 +37,3 @@ def get_last_update():
 
 def get_current_date():
     return datetime.now().strftime("%Y%m%d")
-
-print(list_of_dates_between_today_and_departure())
