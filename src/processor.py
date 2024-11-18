@@ -107,6 +107,8 @@ def read_xlsx(file: Path, param_date: str) -> pd.DataFrame:
     date_obj = datetime.strptime(param_date, "%Y%m%d")
     df["timestamp"] = df["heure"].apply(lambda x: parse_hour(x, date_obj))
     df[["skipper", "bateau"]] = df["nom"].str.split(pat=" - ", n=1, expand=True)
+    # On supprime les abandons 
+    df = df[df["rang"] != "RET"]
 
     return df
 
@@ -136,6 +138,7 @@ def create_geom(file: Path, date: str) -> gpd.GeoDataFrame:
         gpd.GeoDataFrame: Un GeoDataFrame avec la géométrie et les données associées.
     """
     df = read_xlsx(file, date)
+              
     df["latitude_decimal"] = df["latitude"].apply(
         lambda x: dms_to_decimal(*parse_coordinates(x))
     )
