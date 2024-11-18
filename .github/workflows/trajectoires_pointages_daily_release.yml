@@ -1,11 +1,11 @@
-name: Python trajectoires_pointages.py daily release
+name: "📍 Pointage"
 
 on:
   schedule:
-    - cron: "30 7 * * *" 
-  pull_request: 
+    - cron: "30 7 * * *"
+  pull_request:
     branches:
-      - main 
+      - main
   workflow_dispatch:
 
 env:
