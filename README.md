@@ -54,11 +54,15 @@ Ce projet est actuellement un **proof of concept (PoC)**. À l'avenir, plusieurs
 
 **N'hésitez pas à contribuer ou à proposer des améliorations !** 🤝
 
-## Développement
+## 🚀 Développement
 
-Dans ce projet les pre-commit sont utilisés, pour mettre en place votre environnement dev il faut donc faire les opérations suivantes (dans votre venv).
+Dans ce projet, les **pre-commit** sont utilisés. Pour mettre en place votre environnement de développement, il faut donc effectuer les opérations suivantes (dans votre `venv`) :
 
 ```shell
 pip install pre-commit
 pre-commit install
 ```
+
+## 📜 Licence
+
+Ce projet est sous licence MIT - voir le fichier [LICENSE](./LICENSE) pour plus de détails.
