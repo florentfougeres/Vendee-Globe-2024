@@ -65,4 +65,5 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh release create latest ${{ env.FILE_NAME }}.gpkg --title "Latest Daily Release" --notes "Automatically generated daily release"
+          mv ${{ env.FILE_NAME }}.gpkg latest_data.gpkg
+          gh release create latest latest_data.gpkg --title "Latest Data Daily Release" --notes "Automatically generated daily release"
