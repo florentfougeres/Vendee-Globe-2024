@@ -68,6 +68,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           mv ${{ env.FILE_NAME1 }}.gpkg latest_data.gpkg
-          mv ${{ env.FILE_NAME2 }}.gpkg pointages.geojson
-          mv ${{ env.FILE_NAME3 }}.gpkg trajectoire.geojson
+          mv ${{ env.FILE_NAME2 }}.geojson pointages.geojson
+          mv ${{ env.FILE_NAME3 }}.geojson trajectoire.geojson
           gh release create latest latest_data.gpkg pointages.geojson trajectoire.geojson --title "Latest Data Daily Release" --notes "Automatically generated daily release"
