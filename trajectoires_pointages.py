@@ -1,20 +1,20 @@
 "Intégralité des pointages depuis le départ et trajectoire."
 import argparse
 import logging
-from pathlib import Path
 import re
-from src.downloader import download_file, build_url
+from pathlib import Path
+
+from src.downloader import build_url, download_file
 from src.processor import (
-    build_gpkg,
-    create_geom,
     aggreger_geodataframes,
+    create_geom,
     create_trejectoire,
-    export_to_gpkg,
+    export_to_file,
 )
 from src.timemanager import (
-    update_hours,
-    list_of_dates_between_today_and_departure,
     hours_exception,
+    list_of_dates_between_today_and_departure,
+    update_hours,
 )
 
 
@@ -82,8 +82,25 @@ def main():
 
     final_gdf = create_trejectoire(aggreger_geodataframes(list_gdf))
 
-    export_to_gpkg(aggreger_geodataframes(list_gdf), Path(args.output_dir / f"data_{date}.gpkg"), "pointages")
-    export_to_gpkg(final_gdf, Path(args.output_dir / f"data_{date}.gpkg"), "trajectoire")
+    export_to_file(
+        aggreger_geodataframes(list_gdf),
+        Path(args.output_dir / f"data_{date}.gpkg"),
+        "GPKG",
+        "pointages",
+    )
+    export_to_file(
+        aggreger_geodataframes(list_gdf),
+        Path(args.output_dir / f"pointages_{date}.geojson"),
+        "GeoJSON",
+    )
+    export_to_file(
+        final_gdf, Path(args.output_dir / f"data_{date}.gpkg"), "GPKG", "trajectoire"
+    )
+    export_to_file(
+        final_gdf,
+        Path(args.output_dir / f"trajectoire_{date}.geojson"),
+        "GeoJSON",
+    )
 
 
 if __name__ == "__main__":

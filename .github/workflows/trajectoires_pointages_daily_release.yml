@@ -2,14 +2,16 @@ name: "📍 Pointage"
 
 on:
   schedule:
-    - cron: "30 7 * * *"
+    - cron: "30 3,7,11,15,19,23 * * *"
   pull_request:
     branches:
       - main
   workflow_dispatch:
 
 env:
-  FILE_NAME: data_$(date +'%Y%m%d')
+  FILE_NAME1: data_$(date +'%Y%m%d')
+  FILE_NAME2: pointages_$(date +'%Y%m%d')
+  FILE_NAME3: trajectoire_$(date +'%Y%m%d')
 
 permissions:
   contents: write
@@ -65,5 +67,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          mv ${{ env.FILE_NAME }}.gpkg latest_data.gpkg
-          gh release create latest latest_data.gpkg --title "Latest Data Daily Release" --notes "Automatically generated daily release"
+          mv ${{ env.FILE_NAME1 }}.gpkg latest_data.gpkg
+          mv ${{ env.FILE_NAME2 }}.gpkg pointages.geojson
+          mv ${{ env.FILE_NAME3 }}.gpkg trajectoire.geojson
+          gh release create latest latest_data.gpkg pointages.geojson trajectoire.geojson --title "Latest Data Daily Release" --notes "Automatically generated daily release"
