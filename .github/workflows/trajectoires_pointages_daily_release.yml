@@ -93,8 +93,8 @@ jobs:
 
       - name: Move new files to data folder
         run: |
-          mv output/${{ env.FILE_NAME2 }}.geojson data/pointages.geojson
-          mv output/${{ env.FILE_NAME3 }}.geojson data/trajectoire.geojson
+          mv ${{ env.FILE_NAME2 }}.geojson data/pointages.geojson
+          mv ${{ env.FILE_NAME3 }}.geojson data/trajectoire.geojson
 
       - name: Commit and push changes
         run: |
