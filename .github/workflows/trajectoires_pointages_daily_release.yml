@@ -71,3 +71,31 @@ jobs:
           mv ${{ env.FILE_NAME2 }}.geojson pointages.geojson
           mv ${{ env.FILE_NAME3 }}.geojson trajectoire.geojson
           gh release create latest latest_data.gpkg pointages.geojson trajectoire.geojson --title "Latest Data Daily Release" --notes "Automatically generated daily release"
+
+  update-files:
+    needs: release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Clean up old files
+        run: |
+          mkdir -p data
+          rm -f data/*.geojson
+
+      - name: Move new files to data folder
+        run: |
+          mkdir -p data
+          mv pointages.geojson data/
+          mv trajectoire.geojson data/
+
+      - name: Commit and push changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/*.geojson
+          git diff --quiet && echo "No changes to commit" || git commit -m "Daily update: Update pointages and trajectoire files"
+          git push origin main
