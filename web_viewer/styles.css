@@ -1,0 +1,157 @@
+/* Structure de base */
+body {
+  margin: 0;
+  display: flex;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+}
+
+/* Menu latéral */
+#menu {
+  width: 300px;
+  padding: 20px;
+  overflow-y: auto;
+  border-right: 1px solid #ccc;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Thème clair */
+#menu.light {
+  background-color: #f8f9fa; /* Fond clair */
+  color: #212529; /* Texte sombre */
+}
+
+#menu.dark {
+  background-color: #343a40; /* Fond sombre */
+  color: #fff; /* Texte clair */
+}
+
+/* Carte */
+#map {
+  flex: 1;
+  height: 100%;
+}
+
+/* Boutons dans le menu */
+.btn-custom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+
+/* Boutons inactifs */
+.btn-inactive {
+  background-color: #d1e7fd; /* Bleu clair */
+  color: #212529; /* Texte sombre */
+}
+
+.btn-inactive:hover {
+  background-color: #a8c6f1; /* Survol bleu pastel */
+}
+
+/* Boutons actifs */
+.btn-active {
+  background-color: #8de2a1; /* Vert doux */
+  color: #212529; /* Texte sombre */
+}
+
+.btn-active:hover {
+  background-color: #7cc489; /* Survol vert légèrement plus foncé */
+}
+
+/* Espacement entre les boutons dans le menu */
+#boat-menu button {
+  margin-bottom: 12px;
+}
+
+/* Boutons pour afficher tout / masquer tout */
+#action-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: flex-start;
+}
+
+#action-buttons button {
+  padding: 10px 20px;
+  background-color: #007bff; /* Bleu primaire */
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#action-buttons button:hover {
+  background-color: #0056b3; /* Bleu plus foncé au survol */
+}
+
+/* Bouton de changement de thème */
+#theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background-color: #007bff; /* Bleu primaire */
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  z-index: 1000;
+}
+
+#theme-toggle:hover {
+  background-color: #0056b3; /* Bleu plus foncé au survol */
+}
+
+/* Icônes de soleil et lune */
+.sun-icon::before {
+  content: "\2600"; /* Unicode du soleil */
+  font-size: 20px;
+}
+
+.moon-icon::before {
+  content: "\263E"; /* Unicode de la lune */
+  font-size: 20px;
+}
+
+/* Adaptation pour petits écrans */
+@media (max-width: 768px) {
+  body {
+    flex-direction: column;
+  }
+
+  #menu {
+    width: 100%;
+    height: 250px;
+    padding: 10px;
+    border-right: none;
+  }
+
+  #map {
+    flex: 1;
+    height: 300px;
+  }
+
+  #theme-toggle {
+    top: 10px;
+    right: 10px;
+  }
+}

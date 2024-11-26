@@ -1,0 +1,3 @@
+- Mettre une fiche info à gauche de carte
+- Popup au hoover
+- classer les boutons de bateaux dans l'ordre du classement

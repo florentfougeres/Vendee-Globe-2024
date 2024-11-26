@@ -1,0 +1,54 @@
+# Workflow GitHub Actions pour déployer un site web sur GitHub Pages
+
+name: Deploy Web App to GitHub Pages
+
+on:
+  # Ce workflow est déclenché à chaque push sur la branche `main`
+  push:
+    branches:
+      - main
+    paths:
+      - 'web_viewer/**'
+
+  # Permet de déclencher manuellement le workflow depuis l'onglet Actions
+  workflow_dispatch:
+
+# Permissions du GITHUB_TOKEN
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Pour éviter les déploiements concurrents et enchaîner les déploiements
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  # Job de construction
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Préparer le dossier de déploiement
+        run: |
+          mkdir public
+          cp -r web_viewer/* public/
+
+      - name: Ajouter les fichiers dans l'artefact
+        uses: actions/upload-pages-artifact@v3
+
+  # Job de déploiement
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
