@@ -2,9 +2,10 @@
 
 import argparse
 from pathlib import Path
-from src.downloader import download_file, build_url
+
+from src.downloader import build_url, download_file
 from src.processor import build_gpkg
-from src.timemanager import get_current_date, get_last_update
+from src.timemanager import *
 
 
 def main():

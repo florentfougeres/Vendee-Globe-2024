@@ -7,6 +7,9 @@ import geopandas as gpd
 import pandas as pd
 from shapely.geometry import LineString, Point
 
+from src.downloader import build_url, download_file
+from src.timemanager import *
+
 
 def parse_coordinates(coord: str) -> tuple[int, int, int, str]:
     """Analyse une chaîne de caractères représentant une coordonnée
@@ -213,7 +216,12 @@ def create_trejectoire(gdf: gpd.GeoDataFrame) -> gpd.GeoDataFrame:
     trajectory_gdf = gpd.GeoDataFrame(
         trajectories, columns=["geometry"], crs=gdf.crs
     ).reset_index()
-    return trajectory_gdf
+
+    gdf_stat = build_gdf_last_pointages()
+    gdf_stat = gdf_stat.drop(columns="geometry")
+    gdf_joint = trajectory_gdf.merge(gdf_stat, on="code", how="left")
+
+    return gdf_joint
 
 
 def export_to_file(
@@ -241,3 +249,13 @@ def export_to_file(
         logging.info(f"Exportation réussie vers {filepath} avec le driver '{driver}'.")
     except Exception as e:
         logging.error(f"Erreur lors de l'exportation : {e}")
+
+
+def build_gdf_last_pointages():
+    last_update = get_last_update()
+    date = get_current_date()
+    url = build_url(date, last_update)
+    file = f"./.data/data_{date}_{last_update}.xlsx"
+    download_file(url, file)
+    gdf = create_geom(Path(file), date)
+    return gdf
