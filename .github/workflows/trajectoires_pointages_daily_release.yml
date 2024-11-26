@@ -81,6 +81,11 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Download artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: generated-file
+
       - name: Clean up old files
         run: |
           mkdir -p data
@@ -88,9 +93,9 @@ jobs:
 
       - name: Move new files to data folder
         run: |
-          mkdir -p data
-          mv ${{ env.FILE_NAME2 }}.geojson data/pointages.geojson
-          mv ${{ env.FILE_NAME3 }}.geojson data/trajectoire.geojson
+          mv output/${{ env.FILE_NAME2 }}.geojson data/pointages.geojson
+          mv output/${{ env.FILE_NAME3 }}.geojson data/trajectoire.geojson
+
       - name: Commit and push changes
         run: |
           git config user.name "github-actions[bot]"
