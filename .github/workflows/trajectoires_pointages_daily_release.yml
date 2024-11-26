@@ -89,9 +89,8 @@ jobs:
       - name: Move new files to data folder
         run: |
           mkdir -p data
-          mv pointages.geojson data/
-          mv trajectoire.geojson data/
-
+          mv ${{ env.FILE_NAME2 }}.geojson data/pointages.geojson
+          mv ${{ env.FILE_NAME3 }}.geojson data/trajectoire.geojson
       - name: Commit and push changes
         run: |
           git config user.name "github-actions[bot]"
