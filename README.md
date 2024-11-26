@@ -39,11 +39,20 @@ python trajectoires_pointages.py --output-dir ./data_output/
 
 Cela vous fournira un fichier contenant l'ensemble des trajets et positions des skippers. 🛳️
 
-## 📅 Release Journalière
+## 📅 Release
 
-Chaque jour à **7h30**, un processus **CI/CD** exécute le script `trajectoires_pointages.py` et met à jour le fichier **Geopackage** dans la section des [Latest Daily Release](https://github.com/florentfgrs/Vendee-Globe-2024/releases/tag/latest).
+Chaque jour à **3h30, 7h30, 11h30, 15h30, 19h30 et 23h30**, un processus **CI/CD** exécute le script `trajectoires_pointages.py` pour :
 
-Vous pouvez toujours télécharger la dernière version du fichier en cliquant sur le lien suivant : [Derniers Données du Jour](https://github.com/florentfgrs/Vendee-Globe-2024/releases/download/latest/latest_data.gpkg) 🚀
+1. Mettre à jour les fichiers **GeoJSON** (`pointages.geojson` et `trajectoire.geojson`) directement dans le dossier `data/` du dépôt.
+2. Publier un nouveau fichier **Geopackage** dans la section des [Latest Daily Release](https://github.com/florentfgrs/Vendee-Globe-2024/releases/tag/latest).
+
+### 📂 Fichiers disponibles
+
+- **GeoJSON** :
+  - [Pointages](https://github.com/florentfgrs/Vendee-Globe-2024/blob/main/data/pointages.geojson)
+  - [Trajectoires](https://github.com/florentfgrs/Vendee-Globe-2024/blob/main/data/trajectoire.geojson)
+- **Geopackage** :
+  - [Derniers Données du Jour](https://github.com/florentfgrs/Vendee-Globe-2024/releases/download/latest/latest_data.gpkg) 🚀
 
 ## 🔮 Pour Aller Plus Loin
 
