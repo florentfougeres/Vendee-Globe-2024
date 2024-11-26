@@ -88,8 +88,8 @@ jobs:
 
       - name: Clean up old files
         run: |
+          rm -rf data
           mkdir -p data
-          rm -f data/*.geojson
 
       - name: Move new files to data folder
         run: |
@@ -101,5 +101,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add data/*.geojson
-          git diff --quiet && echo "No changes to commit" || git commit -m "Daily update: Update pointages and trajectoire files"
+          git commit -m "Update pointages and trajectoire files"
           git push origin main
