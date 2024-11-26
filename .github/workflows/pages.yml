@@ -35,8 +35,8 @@ jobs:
 
       - name: Préparer le dossier de déploiement
         run: |
-          mkdir _site
-          cp -r web_viewer/* _site/
+          mkdir public
+          cp -r web_viewer/* public/
 
       - name: Ajouter les fichiers dans l'artefact
         uses: actions/upload-pages-artifact@v3
