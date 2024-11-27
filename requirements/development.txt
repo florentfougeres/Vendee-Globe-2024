@@ -2,7 +2,7 @@
 # -----------------------
 
 black
-
+flake8
 pylint>=3
 isort>=5.13
 pre-commit>=3,<4

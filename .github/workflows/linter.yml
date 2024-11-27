@@ -16,7 +16,6 @@ on:
       - '**.py'
 
 env:
-  PROJECT_FOLDER: "test"
   PYTHON_VERSION: 3.9
 
 
@@ -40,7 +39,6 @@ jobs:
       - name: Install project requirements
         run: |
           python -m pip install -U pip setuptools wheel
-          python -m pip install -U flake8
 
       - name: Lint with flake8
         run: |
