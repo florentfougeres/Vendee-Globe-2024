@@ -44,7 +44,7 @@ Cela vous fournira un fichier contenant l'ensemble des trajets et positions des 
 Un visualisateur web permet de visualiser les données qui sont release par la CI (voir ci-dessous). Celui est utilise [Maplibre](https://maplibre.org/), il est déployé par la CI dans les Github Pages à cette [url](https://florentfgrs.github.io/Vendee-Globe-2024/).
 
 > [!IMPORTANT]  
-> Je ne suis pas développeur Web, je me suis donc aidé de ChatGPT pour écrire ce code.
+> Je suis moins familié avec le JavaScript, je me suis donc aidé de ChatGPT pour écrire ce code.
 
 ## 📅 Release
 
