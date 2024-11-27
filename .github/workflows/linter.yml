@@ -16,7 +16,6 @@ on:
       - '**.py'
 
 env:
-  PROJECT_FOLDER: "test"
   PYTHON_VERSION: 3.9
 
 
