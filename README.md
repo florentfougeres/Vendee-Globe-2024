@@ -39,6 +39,13 @@ python trajectoires_pointages.py --output-dir ./data_output/
 
 Cela vous fournira un fichier contenant l'ensemble des trajets et positions des skippers. 🛳️
 
+## 🗺️ Visualisateur web
+
+Un visualisateur web permet de visualiser les données qui sont release par la CI (voir ci-dessous). Celui est utilise [Maplibre](https://maplibre.org/), il est déployé par la CI dans les Github Pages à cette [url](https://florentfgrs.github.io/Vendee-Globe-2024/).
+
+> [!IMPORTANT]  
+> Je ne suis pas développeur Web, je me suis donc aidé de ChatGPT pour écrire ce code.
+
 ## 📅 Release
 
 Chaque jour à **3h30, 7h30, 11h30, 15h30, 19h30 et 23h30**, un processus **CI/CD** exécute le script `trajectoires_pointages.py` pour :
@@ -53,15 +60,6 @@ Chaque jour à **3h30, 7h30, 11h30, 15h30, 19h30 et 23h30**, un processus **CI/C
   - [Trajectoires](https://github.com/florentfgrs/Vendee-Globe-2024/blob/main/data/trajectoire.geojson)
 - **Geopackage** :
   - [Derniers Données du Jour](https://github.com/florentfgrs/Vendee-Globe-2024/releases/download/latest/latest_data.gpkg) 🚀
-
-## 🔮 Pour Aller Plus Loin
-
-Ce projet est actuellement un **proof of concept (PoC)**. À l'avenir, plusieurs améliorations sont envisagées :
-
-- 🚀 **Diffusion des pointages via une API**
-- 🧭 **Chargement direct des pointages depuis un plugin QGIS**
-
-**N'hésitez pas à contribuer ou à proposer des améliorations !** 🤝
 
 ## 🚀 Développement
 
