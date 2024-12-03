@@ -7,7 +7,18 @@ Grâce à ce projet, vous pouvez visualiser les **dernières positions des skipp
 
 ![qgis](img/qgis.png)
 
-## 🛠️ Environnement Virtuel
+## 🗺️ Visualisateur web
+
+Un visualisateur web permet de visualiser les données qui sont release par la CI (voir ci-dessous). Celui est utilise [Maplibre](https://maplibre.org/), il est déployé par la CI dans les Github Pages à cette [url](https://florentfgrs.github.io/Vendee-Globe-2024/).
+
+> [!IMPORTANT]  
+> Je suis moins familié avec le JavaScript, je me suis donc aidé de ChatGPT pour écrire ce code.
+
+![web_viewer](img/web_viewer.png)
+
+## Produire les données
+
+### 🛠️ Environnement Virtuel
 
 Pour installer les dépendances dans un environnement virtuel (venv), voici la procédure recommandée :
 
@@ -19,7 +30,7 @@ pip install -r requirements.txt
 
 Cela vous permettra de garder votre environnement propre et de gérer facilement les bibliothèques nécessaires au projet. 🌱
 
-## 📡 Obtenir le Dernier Pointage en Date au Format GPKG
+### 📡 Obtenir le Dernier Pointage en Date au Format GPKG
 
 Pour récupérer le **dernier pointage** et le sauvegarder en **GPKG**, utilisez la commande suivante :
 
@@ -29,7 +40,7 @@ python dernier_pointage.py --output-dir ./data_output/
 
 Cela vous permettra d'avoir le dernier pointage mis à jour dans votre répertoire de sortie. 📍
 
-## 📜 Télécharger l'Historique Complet des Pointages
+### 📜 Télécharger l'Historique Complet des Pointages
 
 Si vous souhaitez télécharger **tous les pointages historiques**, exécutez :
 
@@ -38,13 +49,6 @@ python trajectoires_pointages.py --output-dir ./data_output/
 ```
 
 Cela vous fournira un fichier contenant l'ensemble des trajets et positions des skippers. 🛳️
-
-## 🗺️ Visualisateur web
-
-Un visualisateur web permet de visualiser les données qui sont release par la CI (voir ci-dessous). Celui est utilise [Maplibre](https://maplibre.org/), il est déployé par la CI dans les Github Pages à cette [url](https://florentfgrs.github.io/Vendee-Globe-2024/).
-
-> [!IMPORTANT]  
-> Je suis moins familié avec le JavaScript, je me suis donc aidé de ChatGPT pour écrire ce code.
 
 ## 📅 Release
 
