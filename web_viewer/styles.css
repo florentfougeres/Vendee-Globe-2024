@@ -155,3 +155,94 @@ body {
     right: 10px;
   }
 }
+
+/* Styles pour le bouton */
+.btn-custom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 16px;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+  background-color: #f5f5f5;
+  color: #333;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-custom:hover {
+  background-color: #007bff;
+  color: white;
+}
+
+.btn-custom .boat-name {
+  flex: 1;
+  font-weight: bold;
+}
+
+.btn-custom .boat-rank {
+  background-color: #007bff;
+  color: white;
+  border-radius: 12px;
+  padding: 2px 8px;
+  font-size: 12px;
+  font-weight: bold;
+  margin-left: 8px;
+}
+
+.btn-custom.btn-active {
+  background-color: #28a745; /* Vert pour le bouton actif */
+  color: white;
+}
+
+.btn-custom.btn-inactive {
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+/* Style pour les bateaux abandonnés */
+.btn-custom .boat-rank {
+  background-color: #6c757d; /* Couleur gris pour les abandonnés */
+  color: white;
+}
+
+.btn-custom .boat-rank[data-rang="Abandonné"] {
+  font-style: italic; /* Italique pour les abandonnés */
+  background-color: #6c757d;
+}
+
+/* Panneau d'information latéral */
+.info-panel {
+  position: fixed;
+  top: 100px;
+  right: 10px;
+  width: 250px;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 8px;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+  display: none; /* Caché par défaut */
+  z-index: 10;
+}
+
+.info-panel h3 {
+  margin-top: 0;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.info-panel p {
+  font-size: 16px;
+  margin: 10px 0;
+}
+
+#boat-info {
+  font-size: 14px;
+  color: #333;
+}
+
+#boat-name, #boat-cap, #boat-vitesse {
+  font-weight: bold;
+  color: #007bff;
+}
