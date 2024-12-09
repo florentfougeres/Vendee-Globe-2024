@@ -1,4 +1,0 @@
-- Mettre une fiche info à droite de carte
-- Popup au hoover
-- classer les boutons de bateaux dans l'ordre du classement
-- Ne plus commit les geojson dans le repo mais tout gérer lors du déploiement de pages 
