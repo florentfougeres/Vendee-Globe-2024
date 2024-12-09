@@ -7,7 +7,7 @@ Grâce à ce projet, vous pouvez visualiser les **dernières positions des skipp
 
 ![qgis](img/qgis.png)
 
-## 🗺️ Visualisateur web
+## 🗺️ Visualiseur Web Cartographique
 
 Un visualisateur web permet de visualiser les données qui sont release par la CI (voir ci-dessous). Celui est utilise [Maplibre](https://maplibre.org/), il est déployé par la CI dans les Github Pages à cette [url](https://florentfgrs.github.io/Vendee-Globe-2024/).
 
