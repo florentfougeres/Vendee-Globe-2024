@@ -30,7 +30,7 @@ pip install -r requirements.txt
 
 Cela vous permettra de garder votre environnement propre et de gérer facilement les bibliothèques nécessaires au projet. 🌱
 
-### 📡 Obtenir le Dernier Pointage en Date au Format GPKG
+### 📡 Obtenir le dernier pointage en Date au Format GPKG
 
 Pour récupérer le **dernier pointage** et le sauvegarder en **GPKG**, utilisez la commande suivante :
 
@@ -40,7 +40,7 @@ python dernier_pointage.py --output-dir ./data_output/
 
 Cela vous permettra d'avoir le dernier pointage mis à jour dans votre répertoire de sortie. 📍
 
-### 📜 Télécharger l'Historique Complet des Pointages
+### 📜 Télécharger l'historique complet des pointages
 
 Si vous souhaitez télécharger **tous les pointages historiques**, exécutez :
 
