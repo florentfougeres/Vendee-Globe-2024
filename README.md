@@ -18,7 +18,7 @@ Un visualisateur web permet de visualiser les données qui sont release par la C
 
 ## Produire les données
 
-### 🛠️ Environnement Virtuel
+### 🛠️ Environnement virtuel
 
 Pour installer les dépendances dans un environnement virtuel (venv), voici la procédure recommandée :
 
