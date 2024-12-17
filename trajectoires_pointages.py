@@ -8,7 +8,7 @@ from src.downloader import build_url, download_file
 from src.processor import (
     aggreger_geodataframes,
     create_geom,
-    create_trejectoire,
+    create_trajectoire,
     export_to_file,
 )
 from src.timemanager import (
@@ -80,7 +80,7 @@ def main():
             gdf = create_geom(file, date)
             list_gdf.append(gdf)
 
-    final_gdf = create_trejectoire(aggreger_geodataframes(list_gdf))
+    final_gdf = create_trajectoire(aggreger_geodataframes(list_gdf))
 
     export_to_file(
         aggreger_geodataframes(list_gdf),

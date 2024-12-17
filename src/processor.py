@@ -5,7 +5,7 @@ from pathlib import Path
 
 import geopandas as gpd
 import pandas as pd
-from shapely.geometry import LineString, Point
+from shapely.geometry import LineString, MultiLineString, Point
 
 from src.downloader import build_url, download_file
 from src.timemanager import *
@@ -201,20 +201,42 @@ def aggreger_geodataframes(liste_geodfs: list[gpd.GeoDataFrame]) -> gpd.GeoDataF
     return geodf_agrege
 
 
-def create_trejectoire(gdf: gpd.GeoDataFrame) -> gpd.GeoDataFrame:
-    """Crée une trajectoire pour chaque code en regroupant les points par code et en créant
-    une `LineString`.
+def create_trajectoire(gdf: gpd.GeoDataFrame) -> gpd.GeoDataFrame:
+    """
+    Crée une trajectoire pour chaque code en regroupant les points par code
+    et en créant une `MultiLineString` lorsqu'une transition longitude dépasse +180/-180.
 
     Args:
         gdf (gpd.GeoDataFrame): Le GeoDataFrame contenant les données à regrouper.
 
     Returns:
-        gpd.GeoDataFrame: Un GeoDataFrame contenant des `LineString` pour chaque code.
+        gpd.GeoDataFrame: Un GeoDataFrame contenant des `MultiLineString` ou `LineString` pour chaque code.
     """
+    # Tri des points par code et timestamp
     gdf = gdf.sort_values(by=["code", "timestamp"])
-    trajectories = gdf.groupby("code").apply(lambda x: LineString(x.geometry.tolist()))
+
+    def build_trajectory(group):
+        points = list(group.geometry)
+        lines = []
+        current_line = [points[0]]
+
+        for p1, p2 in zip(points[:-1], points[1:]):
+
+            if abs(p1.x - p2.x) > 180:
+                lines.append(LineString(current_line))
+                current_line = [p2]
+            else:
+                current_line.append(p2)
+
+        if current_line:
+            lines.append(LineString(current_line))
+
+        return MultiLineString(lines) if len(lines) > 1 else lines[0]
+
+    trajectories = gdf.groupby("code").apply(build_trajectory)
+
     trajectory_gdf = gpd.GeoDataFrame(
-        trajectories, columns=["geometry"], crs=gdf.crs
+        {"geometry": trajectories}, crs=gdf.crs
     ).reset_index()
 
     gdf_stat = build_gdf_last_pointages()
