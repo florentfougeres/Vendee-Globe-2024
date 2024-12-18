@@ -223,12 +223,14 @@ def create_trajectoire(gdf: gpd.GeoDataFrame) -> gpd.GeoDataFrame:
         for p1, p2 in zip(points[:-1], points[1:]):
 
             if abs(p1.x - p2.x) > 180:
-                lines.append(LineString(current_line))
+
+                if len(current_line) > 1:
+                    lines.append(LineString(current_line))
                 current_line = [p2]
             else:
                 current_line.append(p2)
 
-        if current_line:
+        if len(current_line) > 1:
             lines.append(LineString(current_line))
 
         return MultiLineString(lines) if len(lines) > 1 else lines[0]
