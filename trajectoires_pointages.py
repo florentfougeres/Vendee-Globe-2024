@@ -84,7 +84,7 @@ def main():
 
     export_to_file(
         aggreger_geodataframes(list_gdf),
-        Path(args.output_dir / f"data_{date}.gpkg"),
+        Path(args.output_dir / f"pointages_{date}.gpkg"),
         "GPKG",
         "pointages",
     )
@@ -94,7 +94,7 @@ def main():
         "GeoJSON",
     )
     export_to_file(
-        final_gdf, Path(args.output_dir / f"data_{date}.gpkg"), "GPKG", "trajectoire"
+        final_gdf, Path(args.output_dir / f"trajectoire_{date}.gpkg"), "GPKG", "trajectoire"
     )
     export_to_file(
         final_gdf,
