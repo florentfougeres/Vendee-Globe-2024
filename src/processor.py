@@ -132,8 +132,18 @@ def read_xlsx(file: Path, param_date: str) -> pd.DataFrame:
     date_obj = datetime.strptime(param_date, "%Y%m%d")
     df["timestamp"] = df["heure"].apply(lambda x: parse_hour(x, date_obj))
     df[["skipper", "bateau"]] = df["nom"].str.split(pat=" - ", n=1, expand=True)
-    # On supprime les abandons
+
     df = df[df["rang"] != "RET"]
+
+    df = df[df["rang"] != "Rang - Rank"]
+
+    df = df.dropna(subset=["rang"])
+
+    port_latitude_decimal = "46°29.79'N"
+    port_longitude_decimal = "01°46.62'W"
+
+    df["latitude"] = df["latitude"].fillna(port_latitude_decimal)
+    df["longitude"] = df["longitude"].fillna(port_longitude_decimal)
 
     return df
 
@@ -198,6 +208,7 @@ def aggreger_geodataframes(liste_geodfs: list[gpd.GeoDataFrame]) -> gpd.GeoDataF
         raise ValueError("La liste de GeoDataFrames est vide.")
 
     geodf_agrege = gpd.GeoDataFrame(pd.concat(liste_geodfs, ignore_index=True))
+
     return geodf_agrege
 
 
